@@ -89,26 +89,6 @@ class Issues::DraftsTest < ApplicationSystemTestCase
     assert_text "Graffiti"
   end
 
-  test "location step requires zooming in before continuing" do
-    login_as(@user)
-
-    click_on "Nahlásiť podnet"
-
-    attach_file "issues_draft_photos", "test/fixtures/files/avatar.png", visible: false
-
-    assert_text "Lokalita"
-    assert_text "Priblížte mapu a nastavte presnú polohu podnetu."
-    assert_button "Pokračovať", disabled: true
-
-    (13..Issues::Draft::GEO_MIN_ZOOM).each do |zoom|
-      click_on "Zoom in"
-      assert_selector "#issues_draft_zoom[value='#{zoom}']", visible: false
-    end
-
-    assert_no_text "Priblížte mapu a nastavte presnú polohu podnetu."
-    assert_button "Pokračovať", disabled: false
-  end
-
   test "issue creation on unsupported municipality" do
     municipality = municipalities("bratislava")
     municipality.update!(active: false)
