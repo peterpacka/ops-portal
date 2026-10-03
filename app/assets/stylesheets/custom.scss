@@ -97,8 +97,7 @@ section.report.report-geo .button:disabled {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 60px);
-        height: calc(100dvh - 60px);
+        min-height: calc(100vh - 60px);
         padding-bottom: 16px;
         padding-top: 16px;
     }
@@ -113,12 +112,11 @@ section.report.report-geo .button:disabled {
     section.report.report-geo .report-map-con {
         flex: 1;
         gap: 12px 0;
-        min-height: 0;
     }
 
     section.report.report-geo .report-map {
         flex: 1;
-        min-height: 240px;
+        min-height: 200px;
     }
 
     section.report.report-geo .issues-draft-map {
